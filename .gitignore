@@ -1,0 +1,10 @@
+/target/
+/.settings/
+/.classpath
+/.project
+/logs/
+
+######################
+# Maven Wrapper
+######################
+!.mvn/wrapper/maven-wrapper.jar
