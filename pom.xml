@@ -58,8 +58,9 @@
 		  <httpsPort>9090</httpsPort>
 		  <!-- disable http 8080 default port-->
 		 <port>0</port>
-         <keystoreFile>${basedir}/localhost-rsa.jks</keystoreFile>
-         <keystorePass>changeit</keystorePass>
+		 <!-- default keystoreFile is under windows home/.keystore  -->
+        <!-- <keystoreFile>${basedir}/.keystore</keystoreFile>
+         <keystorePass>changeit</keystorePass> -->
         </configuration>
 		<executions>
           <execution>
