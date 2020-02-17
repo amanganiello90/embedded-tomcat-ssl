@@ -108,11 +108,14 @@ mvnw clean package
 
 > Avrai un jar sotto a target con suffisso **war-exec** . 
 
-* Run
+* Run:
 
  ```java -jar <nome-jar> --httpsPort 9090 --keyAlias tomcat```
 
 
+## Note
+
+* Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start
 
 ## Link utili
 
