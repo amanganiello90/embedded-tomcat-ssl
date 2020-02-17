@@ -17,7 +17,7 @@ Questo è un quick start per usare tomcat-embedded con jks (certificato ssl) in 
 keytool -genkey -noprompt -alias <your-alias> -keyalg RSA -keystore <your-file-name> -keypass <your-password> -storepass <your-password> -dname "CN=<your-cert-name>, OU=<your-organization-unit>, O=<your-organization>, L=<your-location>, ST=<state>, C=<two-letter-country-code>"
 ```
 
-> Fai attenzione di sostituire i parametri in parentesi angolari con i tuoi valori. In questo esempio i valori sono:
+> Fai attenzione a sostituire i parametri in parentesi angolari con i tuoi valori. In questo esempio i valori sono:
 ```
 keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=localhost-rsa, OU=amanga, O=amangafull, L=Nola, ST=Italia, C=IT"
 ```
@@ -90,6 +90,9 @@ https://localhost:9090/hello
 		  <httpsPort>9090</httpsPort>
 		  <!-- disable http 8080 default port-->
 		 <port>0</port>
+		  <!-- default keystoreFile is under windows home/.keystore  -->
+        <!-- <keystoreFile>${basedir}/.keystore</keystoreFile>
+         <keystorePass>changeit</keystorePass> -->
         </configuration>
 </plugin>
 
@@ -116,6 +119,14 @@ mvnw clean package
 ## Note
 
 * Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start
+* Il jks keystore generato è autosegnato e **non sicuro**, ovvero non censito dalle autorità di certificati (vedi i link utili per richiedere il **ca**)
+* E' possibile visualizzare la creazione e la scadenza del certificato dal browser:
+
+
+![Visualizza certificato](img/Visualizza-certificato.png)
+
+![Scadenza](img/Scadenza.png)
+
 
 ## Link utili
 
