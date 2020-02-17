@@ -90,7 +90,9 @@ https://localhost:9090/hello
 		  <httpsPort>9090</httpsPort>
 		  <!-- disable http 8080 default port-->
 		 <port>0</port>
-		  <!-- default keystoreFile is under windows home/.keystore  -->
+		<!-- default keystoreFile is under windows home/.keystore. 
+		 Uncomment to override path with keystoreFile (but it does not override path with executable jar!!) -->
+		 
         <!-- <keystoreFile>${basedir}/.keystore</keystoreFile>
          <keystorePass>changeit</keystorePass> -->
         </configuration>
