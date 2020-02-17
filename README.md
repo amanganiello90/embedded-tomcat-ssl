@@ -2,11 +2,14 @@
 
 Questo è un quick start per usare tomcat-embedded con jks (certificato ssl).
 
-## Build the project
+
+## Builda il progetto
 
 ```
-mvnw clean install
+mvnw clean package
 ```
+
+> Genera un jar sotto a target con suffisso **war-exec** . Run con ```java -jar <nome-jar> --httpsPort 9090```
 
 ## Start the embedded Tomcat server
 
@@ -49,11 +52,73 @@ INFO: Starting ProtocolHandler ["http-bio-9090"]
 ```
 
 
-Apri il browser.
+Apri il browser:
 
 ```
 http://localhost:9090/hello
 ```
 
 ![Embedded Tomcat](img/Embedded-Tomcat.png)
+
+
+# Creazione certificato self-signed in Windows
+
+* Vai nella directory dove è installato java (per esempio in **C:\Program Files\Java**), e prosegui sotto a bin dove è presente **keytool.exe**
+
+* Copia il percorso ed apri il prompt dei comandi di windows in modalità amministratore
+
+* Esegui nel prompt: ```cd <percorso-copiato> ```, ove tra parentesi angolari c'è il percorso copiato precedentemente.
+
+* Lancia:
+
+```
+keytool -genkey -noprompt -alias <your-alias> -keyalg RSA -keystore <your-file-name> -keypass <your-password> -storepass <your-password> -dname "CN=<your-cert-name>, OU=<your-organization-unit>, O=<your-organization>, L=<your-location>, ST=<state>, C=<two-letter-country-code>"
+```
+
+> Fai attenzione di sostituire i parametri in parentesi angolari con i tuoi valori. In questo esempio i valori sono:
+```
+keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore localhost-rsa.jks -keypass changeit -storepass changeit -dname "CN=localhost-rsa, OU=amanga, O=amangafull, L=Nola, ST=Italia, C=IT"
+```
+
+* Copia il file **localhost-rsa.jks** nella stessa folder del tuo progetto con tomcat7-maven-plugin
+
+* Inserisci questa configurazione nel pom.xml:
+
+```
+<plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+         <path>/</path>
+		<!-- https protocol -->
+		 <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
+		  <httpsPort>9090</httpsPort>
+		  <!-- disable http 8080 default port-->
+		 <port>0</port>
+         <keystoreFile>${basedir}/localhost-rsa.jks</keystoreFile>
+         <keystorePass>changeit</keystorePass>
+        </configuration>
+</plugin>
+
+```
+
+> Il parametro port a zero disabilita l'esposizione dell'applicazione anche sull l'http (di default tomcat parte sulla porta 8080)
+
+
+## Link utili
+
+* https://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html
+* https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html
+
+Creare cert da jks precedente:
+
+```
+keytool -export -alias tomcat -storepass changeit -file server.cer -keystore localhost-rsa.jks
+```
+
+Importarlo:
+```
+keytool -import -v -trustcacerts -alias example -file server.cer -keystore localhost-rsa.jks -storepass changeit
+```
 

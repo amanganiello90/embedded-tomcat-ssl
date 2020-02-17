@@ -50,13 +50,27 @@
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <port>9090</port>
-          <path>/</path>
+        <version>2.1</version>
+		<configuration>
+         <path>/</path>
+		 <!-- https protocol -->
+		 <protocol>org.apache.coyote.http11.Http11NioProtocol</protocol>
+		  <httpsPort>9090</httpsPort>
+		  <!-- disable http 8080 default port-->
+		 <port>0</port>
+         <keystoreFile>${basedir}/localhost-rsa.jks</keystoreFile>
+         <keystorePass>changeit</keystorePass>
         </configuration>
+		<executions>
+          <execution>
+            <id>tomcat-run</id>
+			 <goals>
+              <goal>exec-war-only</goal>
+            </goals>
+            <phase>package</phase>
+	   </execution>
+     </executions>
       </plugin>
-
     </plugins>
   </build>
 </project>
