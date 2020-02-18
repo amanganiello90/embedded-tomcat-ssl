@@ -134,4 +134,5 @@ mvnw clean package
 
 * https://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html
 * https://tomcat.apache.org/tomcat-8.0-doc/ssl-howto.html
+* https://www.ionos.it/digitalguide/siti-web/creare-siti/come-si-migra-una-pagina-da-http-a-ssl-e-https/
 
