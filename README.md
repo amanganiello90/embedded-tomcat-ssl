@@ -9,7 +9,7 @@ Questo è un quick start per usare tomcat-embedded con jks (certificato ssl) in 
 
 * Copia il percorso ed apri il prompt dei comandi di windows in modalità amministratore
 
-* Esegui nel prompt: ```cd <percorso-copiato> ```, ove tra parentesi angolari c'è il percorso copiato precedentemente.
+* Esegui nel prompt: ```cd <percorso> ```, ove tra parentesi angolari c'è il percorso copiato precedentemente.
 
 * Lancia:
 
@@ -121,7 +121,7 @@ mvnw clean package
 ## Note
 
 * Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start
-* Il jks keystore generato è autosegnato e **non sicuro**, ovvero non censito dalle autorità di certificati (vedi i link utili per richiedere il **ca**)
+* Il jks keystore generato è autosegnato e **non sicuro**, ovvero non censito dalle autorità di certificati (vedi i link utili per richiedere il **ca**). Ogni autority fornisce un form con le istruzioni da seguire per poter avere un certificato validato, fornendo host dell'applicazione ed informazioni sulla ragione sociale dell'azienda o cliente.
 * E' possibile visualizzare la creazione e la scadenza del certificato dal browser:
 
 
