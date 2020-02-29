@@ -130,6 +130,25 @@ mvnw clean package
 ![Scadenza](img/Scadenza.png)
 
 
+### Installare certificato acquistato nel keystore
+
+* Crea il keystore come da punti precedenti con keytool, esempio:
+
+```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=soluzioneassicurazione.it, OU=Assicurazioni O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
+
+> Ora fai richiesta su *https://www.register.it/* del certificato SSLPositive con i dati dname usati nel keystore (CN, ON, C, etc.). Una volta ricevuto quello principale e intermedio vai avanti nei prossimi step.
+
+* Nella stessa cartella dove sta il .keystore esegui (usando sempre keytool):
+
+```keytool -import -alias intermed -keystore .keystore -trustcacerts -file [nome del certificato intermedio]```
+
+* Poi:
+
+```keytool -import -alias tomcat -keystore .keystore -trustcacerts -file [nome del certificato]```
+
+
+> I certificati di esempio si trovano sotto alla cartella qui annessa
+
 ## Link utili
 
 * https://docs.oracle.com/cd/E19798-01/821-1751/ghlgv/index.html
