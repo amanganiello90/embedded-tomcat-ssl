@@ -116,27 +116,19 @@ mvnw clean package
 * Run:
 
  ```java -jar <nome-jar> --httpsPort 9090 --keyAlias tomcat```
-
-
-## Note
-
-* Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start
-* Il jks keystore generato è autosegnato e **non sicuro**, ovvero non censito dalle autorità di certificati (vedi i link utili per richiedere il **ca**). Ogni autority fornisce un form con le istruzioni da seguire per poter avere un certificato validato, fornendo host dell'applicazione ed informazioni sulla ragione sociale dell'azienda o cliente.
-* E' possibile visualizzare la creazione e la scadenza del certificato dal browser:
-
-
-![Visualizza certificato](img/Visualizza-certificato.png)
-
-![Scadenza](img/Scadenza.png)
-
-
-### Installare certificato acquistato nel keystore
+ 
+## Installare certificato acquistato nel keystore per navigazione sicura
 
 * Crea il keystore come da punti precedenti con keytool, esempio:
 
 ```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=soluzioneassicurazione.it, OU=Assicurazioni O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
 
-> Ora fai richiesta su *https://www.register.it/* del certificato SSLPositive con i dati dname usati nel keystore (CN, ON, C, etc.). Una volta ricevuto quello principale e intermedio vai avanti nei prossimi step.
+> Ora fai richiesta su *https://www.register.it/* del certificato SSLPositive con i dati dname usati nel keystore (CN, ON, C, etc.).
+Per fare questo genera il file *csr* dal tuo keystore da incollare nel form della richiesta:
+
+```keytool -certreq -keyalg RSA -alias tomcat -file csr.csr -keystore .keystore```
+
+Una volta ricevuto i certificati principali e intermedi vai avanti nei prossimi step.
 
 * Nella stessa cartella dove sta il .keystore esegui (usando sempre keytool):
 
@@ -144,10 +136,18 @@ mvnw clean package
 
 * Poi:
 
-```keytool -import -alias tomcat -keystore .keystore -trustcacerts -file [nome del certificato]```
+```keytool -import -alias tomcat1 -keystore .keystore -trustcacerts -file [nome del certificato]```
+
+* Copia il .keystore sotto alla tua user home
 
 
 > I certificati di esempio si trovano sotto alla cartella qui annessa
+
+
+## Note
+
+* Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start con import dei certificati autorizzati per *www.soluzioneassicurazione.it*
+
 
 ## Link utili
 
