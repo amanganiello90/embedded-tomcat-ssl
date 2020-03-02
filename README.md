@@ -82,7 +82,7 @@ https://localhost:9090/hello
 <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
+        <version>2.1</version>
         <configuration>
          <path>/</path>
 		<!-- https protocol -->
