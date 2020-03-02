@@ -131,14 +131,15 @@ Per fare questo genera il file *csr* dal tuo keystore da incollare nel form dell
 ![Richiedi CSR](img/richiedi-csr.png)
 
 Una volta ricevuto i certificati principali e intermedi, ovvero dopo aver eseguito le istruzioni da email per attivare il prodotto con casella del dominio annessa (@postmaster per esempio), vai avanti nei prossimi step.
+Riceverai due certificati, uno *intermedio* e l'altro *globale*
 
-* Nella stessa cartella dove sta il .keystore esegui (usando sempre keytool):
+* Nella stessa cartella dove stanno il .keystore e i certificati avuti esegui (usando sempre keytool):
 
 ```keytool -import -alias intermed -keystore .keystore -trustcacerts -file [nome del certificato intermedio]```
 
 * Poi:
 
-```keytool -import -alias tomcat1 -keystore .keystore -trustcacerts -file [nome del certificato]```
+```keytool -import -alias tomcat1 -keystore .keystore -trustcacerts -file [nome del certificato globale]```
 
 * Copia il .keystore sotto alla tua user home
 
