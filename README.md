@@ -130,7 +130,7 @@ Per fare questo genera il file *csr* dal tuo keystore da incollare nel form dell
 
 ![Richiedi CSR](img/richiedi-csr.png)
 
-Una volta ricevuto i certificati principali e intermedi vai avanti nei prossimi step.
+Una volta ricevuto i certificati principali e intermedi, ovvero dopo aver eseguito le istruzioni da email per attivare il prodotto con casella del dominio annessa (@postmaster per esempio), vai avanti nei prossimi step.
 
 * Nella stessa cartella dove sta il .keystore esegui (usando sempre keytool):
 
