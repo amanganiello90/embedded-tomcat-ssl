@@ -128,6 +128,8 @@ Per fare questo genera il file *csr* dal tuo keystore da incollare nel form dell
 
 ```keytool -certreq -keyalg RSA -alias tomcat -file csr.csr -keystore .keystore```
 
+![Richiedi CSR](img/richiedi-csr.png)
+
 Una volta ricevuto i certificati principali e intermedi vai avanti nei prossimi step.
 
 * Nella stessa cartella dove sta il .keystore esegui (usando sempre keytool):
