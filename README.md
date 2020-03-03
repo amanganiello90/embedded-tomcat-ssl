@@ -135,11 +135,11 @@ Riceverai due certificati, uno *intermedio* e l'altro *globale*
 
 * Nella stessa cartella dove stanno il .keystore e i certificati avuti esegui (usando sempre keytool):
 
-```keytool -import -alias intermed -keystore .keystore -trustcacerts -file [nome del certificato intermedio]```
+```keytool -import -alias intermed -keystore .keystore -storepass changeit -trustcacerts -file [nome del certificato intermedio]```
 
 * Poi:
 
-```keytool -import -alias tomcat -keystore .keystore -trustcacerts -file [nome del certificato globale]```
+```keytool -import -alias tomcat -keystore .keystore -storepass changeit -trustcacerts -file [nome del certificato globale]```
 
 * Copia il .keystore sotto alla tua user home
 
