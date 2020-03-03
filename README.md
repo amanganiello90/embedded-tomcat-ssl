@@ -121,7 +121,7 @@ mvnw clean package
 
 * Crea il keystore come da punti precedenti con keytool, esempio:
 
-```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=soluzioneassicurazione.it, OU=Assicurazioni O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
+```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=www.soluzioneassicurazione.it, OU=Assicurazioni O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
 
 > Ora fai richiesta su *https://www.register.it/* del certificato SSLPositive con i dati dname usati nel keystore (CN, ON, C, etc.).
 Per fare questo genera il file *csr* dal tuo keystore da incollare nel form della richiesta:
@@ -139,7 +139,7 @@ Riceverai due certificati, uno *intermedio* e l'altro *globale*
 
 * Poi:
 
-```keytool -import -alias tomcat1 -keystore .keystore -trustcacerts -file [nome del certificato globale]```
+```keytool -import -alias tomcat -keystore .keystore -trustcacerts -file [nome del certificato globale]```
 
 * Copia il .keystore sotto alla tua user home
 
