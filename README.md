@@ -124,9 +124,12 @@ mvnw clean package
 ```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=www.soluzioneassicurazione.it, OU=Assicurazioni O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
 
 > Ora fai richiesta su *https://www.register.it/* del certificato SSLPositive con i dati dname usati nel keystore (CN, ON, C, etc.).
-Per fare questo genera il file *csr* dal tuo keystore da incollare nel form della richiesta:
+Qui dovrai dare informazioni sulla tua ragione sociale, partita iva e altro, ovviamente le stesse usate nel dname del keystore.
+Per richiedere il certificato, devi generare il file *csr* dal tuo keystore da incollare nel form della richiesta:
 
 ```keytool -certreq -keyalg RSA -alias tomcat -file csr.csr -keystore .keystore```
+
+> **Fai attenzione al Dname usato, un www.mydominio.it è diverso da mydominio.it 
 
 ![Richiedi CSR](img/richiedi-csr.png)
 
