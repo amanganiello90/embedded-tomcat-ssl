@@ -131,7 +131,7 @@ Per richiedere il certificato, devi generare il file *csr* dal tuo keystore da i
 
 > Se ti chiede una password digita _changeit_
 
-> **Fai attenzione al Dname usato che corrisponde al tuo dominio acquistato su Aruba o altrove, un www.soluzioneassicurazione.it è diverso da soluzioneassicurazione.it
+> **Fai attenzione al Dname usato che corrisponde al tuo dominio acquistato su Aruba o altrove, un www.soluzioneassicurazione.it è diverso da soluzioneassicurazione.it**
 
 ![Richiedi CSR](img/richiedi-csr.png)
 
