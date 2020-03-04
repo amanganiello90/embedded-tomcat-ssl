@@ -121,7 +121,7 @@ mvnw clean package
 
 * Crea il keystore come da punti precedenti con keytool, esempio:
 
-```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=www.soluzioneassicurazione.it, OU=Assicurazioni, O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
+```keytool -genkey -noprompt -alias tomcat -keyalg RSA -keystore .keystore -keypass changeit -storepass changeit -dname "CN=soluzioneassicurazione.it, OU=Assicurazioni, O=SoluzioneAssicurazione, L=Comiziano, ST=Italia, C=IT"```
 
 > Ora fai richiesta su *https://www.register.it/* del certificato SSLPositive con i dati dname usati nel keystore (CN, ON, C, etc.).
 Qui dovrai dare informazioni sulla tua ragione sociale, partita iva e altro, ovviamente le stesse usate nel dname del keystore.
@@ -154,7 +154,7 @@ Riceverai due certificati, uno *intermedio* e l'altro *globale*
 
 ## Note
 
-* Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start con import dei certificati autorizzati per *www.soluzioneassicurazione.it*
+* Sotto a questo repository c'è il **.keystore** generato ed usato dal quick start con import dei certificati autorizzati per *soluzioneassicurazione.it*
 
 
 ## Link utili
